@@ -7,6 +7,7 @@ import { ReactNode } from "react";
 import { Metadata } from "next";
 import { ClerkProvider } from "@clerk/nextjs";
 import { dark } from "@clerk/themes";
+import Provider from "./Provider";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -18,14 +19,18 @@ export const metadata: Metadata = {
   description: "Your go-to cllaborative editor",
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <ClerkProvider
       appearance={{
         baseTheme: dark,
-        variables: { 
-          colorPrimary: "#3371FF" ,
-          fontSize: '16px'
+        variables: {
+          colorPrimary: "#3371FF",
+          fontSize: "16px",
         },
       }}
     >
@@ -36,7 +41,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             fontSans.variable
           )}
         >
-          {children}
+          <Provider>{children}</Provider>
         </body>
       </html>
     </ClerkProvider>
