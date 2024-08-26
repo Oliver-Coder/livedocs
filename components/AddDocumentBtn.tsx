@@ -3,11 +3,15 @@
 import React from "react";
 import { Button } from "./ui/button";
 import Image from "next/image";
+import { creatDocument } from "@/lib/actions/room.actions";
 
 const AddDocumentBtn = ({ userId, email }: AddDocumentBtnProps) => {
   const AddDocumentHandler = async () => {
     try {
-    } catch (error) {}
+      creatDocument({ userId, email });
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
     <Button
