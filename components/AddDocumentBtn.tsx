@@ -4,11 +4,16 @@ import React from "react";
 import { Button } from "./ui/button";
 import Image from "next/image";
 import { creatDocument } from "@/lib/actions/room.actions";
+import { useRouter } from "next/navigation";
 
 const AddDocumentBtn = ({ userId, email }: AddDocumentBtnProps) => {
+  const router = useRouter();
+
   const AddDocumentHandler = async () => {
     try {
-      creatDocument({ userId, email });
+      const room = await creatDocument({ userId, email });
+
+      if(room) router.push(`/documents/${room.id}`);
     } catch (error) {
       console.log(error);
     }
