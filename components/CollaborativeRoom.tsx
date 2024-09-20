@@ -8,6 +8,7 @@ import ActiveCollaborators from "./ActiveCollaborators";
 import { useEffect, useRef, useState } from "react";
 import { Input } from "./ui/input";
 import Image from "next/image";
+import { updateDocument } from "@/lib/actions/room.actions";
 
 const CollaborativeRoom = ({
   roomId,
@@ -29,7 +30,7 @@ const CollaborativeRoom = ({
       setLoading(true);
       try {
         if (documentTitle !== roomMetadata.title) {
-          const updatedDocument = await updatedDocument(roomId, documentTitle);
+          const updatedDocument = await updateDocument(roomId, documentTitle);
 
           if (updatedDocument) {
             setEditing(false);
@@ -49,6 +50,7 @@ const CollaborativeRoom = ({
         !containerRef.current.contains(e.target as Node)
       ) {
         setEditing(false);
+        updateDocument(roomId, documentTitle);
       }
     };
 
