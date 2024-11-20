@@ -29,8 +29,13 @@
     "lucide-react": "^0.428.0",
     "nanoid": "^5.0.7",
     "next": "^15.0.3",
+<<<<<<< HEAD
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+=======
+    "react": "^18",
+    "react-dom": "^18",
+>>>>>>> 65a3b41c75364ac5beef425237e3a515e3da4c9f
     "tailwind-merge": "^2.5.2",
     "tailwindcss-animate": "^1.0.7"
   },

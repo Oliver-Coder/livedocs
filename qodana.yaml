@@ -1,0 +1,49 @@
+#-------------------------------------------------------------------------------#
+#               Qodana analysis is configured by qodana.yaml file               #
+#             https://www.jetbrains.com/help/qodana/qodana-yaml.html            #
+#-------------------------------------------------------------------------------#
+version: "1.0"
+#Specify inspection profile for code analysis
+profile:
+  name: qodana.starter
+#Enable inspections
+#include:
+#  - name: <SomeEnabledInspectionId>
+#Disable inspections
+#exclude:
+#  - name: <SomeDisabledInspectionId>
+#    paths:
+#      - <path/where/not/run/inspection>
+#Execute shell command before Qodana execution (Applied in CI/CD pipeline)
+#bootstrap: sh ./prepare-qodana.sh
+#Install IDE plugins before Qodana execution (Applied in CI/CD pipeline)
+#plugins:
+#  - id: <plugin.id> #(plugin id can be found at https://plugins.jetbrains.com)
+#Specify Qodana linter for analysis (Applied in CI/CD pipeline)
+linter: jetbrains/qodana-js:2024.3
+exclude:
+  - name: All
+    paths:
+      - app
+      - app/(auth)
+      - app/(auth)/sign-in
+      - app/(auth)/sign-in/sign-up
+      - app/(auth)/sign-in/sign-up/[[...sign-up]]
+      - app/(auth)/sign-in/sign-up/[[...sign-up]]/page.tsx
+      - app/(root)
+      - app/(root)/page.tsx
+      - app/api
+      - app/api/liveblocks-auth
+      - app/api/liveblocks-auth/route.ts
+      - app/api/sentry-example-api
+      - app/api/sentry-example-api/route.ts
+      - app/layout.tsx
+      - components
+      - components/editor
+      - components/editor/plugins
+      - components/editor/plugins/FloatingToolbarPlugin.tsx
+      - components/editor/Editor.tsx
+      - components/CollaborativeRoom.tsx
+      - lib
+      - lib/actions
+      - lib/actions/room.actions.ts
